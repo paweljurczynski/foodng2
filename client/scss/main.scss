@@ -1,0 +1,47 @@
+.td-small {
+  width: 12%;
+}
+.action-cell {
+  width: 100px;
+}
+.fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  opacity: 1;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+  transition: transform 600ms cubic-bezier(.12,.88,.37,.99), opacity 650ms linear;
+}
+.fade.ng-enter {
+  transform: translate3d(15%,0,0);
+  opacity: 0;
+}
+.fade.ng-enter-active,
+.fade.ng-leave {
+  transform: translate3d(0,0,0);
+  opacity: 1;
+}
+.fade.ng-leave-active {
+  transition: 0;
+  opacity: 0;
+}
+.map-canvas {
+  height: 500px !important;
+}
+// .content-wrapper {
+//   background: #ffffff;
+//   background: -moz-linear-gradient(-45deg, #ffffff 0%, #f3f3f3 50%, #ededed 50%, #ffffff 100%);
+//   background: -webkit-linear-gradient(-45deg, #ffffff 0%,#f3f3f3 50%,#ededed 50%,#ffffff 100%);
+//   background: linear-gradient(135deg, #ffffff 0%,#f3f3f3 50%,#ededed 50%,#ffffff 100%);
+//   filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 );
+// }
+// input,
+// select {
+//     &.ng-invalid {
+//         border-color: #E74C3C;
+//         box-shadow: 0 0 8px 0 #E74C3C;
+//     }
+// }

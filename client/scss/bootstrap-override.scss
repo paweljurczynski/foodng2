@@ -1,0 +1,16 @@
+$error-color: #e74c3c;
+$error-color-darken: #c0392b;
+
+.has-error{
+	.form-control{
+		border-color: $error-color;
+		&:focus{
+			border-color: $error-color;
+			box-shadow: 0 0 5px 0 $error-color;
+		}
+	}
+
+	.control-label{
+		color: $error-color;
+	}
+}
