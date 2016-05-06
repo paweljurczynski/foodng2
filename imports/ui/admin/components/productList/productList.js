@@ -18,6 +18,27 @@ class ProductList {
       }
     });
   }
+  
+  delete(_id, name){
+    swal({
+      title: "Jesteś pewien?",
+      text: "Próbujesz usunąć " + name + ".",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Tak, usuń go!",
+      cancelButtonText: "Anuluj",
+      closeOnConfirm: false,
+      html: false
+    }, function() {
+      Products.remove({
+        _id
+      });
+      swal("Usunięto!",
+          "Produkt " + name + " został usunięty.",
+          "success");
+    });
+  }
 }
 
 const name = 'productList';
