@@ -10,5 +10,6 @@ import 'sweetalert/dist/sweetalert.css';
 import 'sweetalert/dist/sweetalert.min.js';
 
 import 'angular-ui-notification/dist/angular-ui-notification.min.css';
+import '../imports/utils/error-messages';
 
 import { name as FoodService } from '../imports/ui/admin/components/foodservice/foodservice';
