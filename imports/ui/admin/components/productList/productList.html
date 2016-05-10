@@ -19,14 +19,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="product in productList.products">
+                            <tr ng-repeat="product in vm.products">
                                 <td>
                                     <h4>{{product.name}}</h4>
                                     <span ng-repeat="ingredient in product.ingredients" ng-if="product.ingredients">{{ingredient}}, </span>
                                 </td>
                                 <td class="text-right">
                                     <a href="/Products/Edit/{{product._id}}" class="btn btn-large btn-primary glyphicon glyphicon-pencil"></a>
-                                    <a href="" class="btn btn-large btn-danger glyphicon glyphicon-trash" ng-click="productList.delete(product._id, name)"></a>
+                                    <a href="" class="btn btn-large btn-danger glyphicon glyphicon-trash" ng-click="vm.delete(product._id, product.name)"></a>
                                 </td>
                             </tr>
                             </tbody>

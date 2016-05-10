@@ -1,0 +1,68 @@
+<section class="content-header">
+    <h1>
+        {{vm.product.name}}
+        <small>Zmień dane produktu</small>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <form name="form" class="css-form" novalidate>
+                        <div class="form-group"
+                             ng-class="{'has-error' : (form.$submitted || form.name.$touched) && form.name.$error.required }">
+                            <label for="">Nazwa produktu</label>
+                            <input type="text" ng-model="vm.product.name" name="name" required="" class="form-control"
+                                   id="formName"/>
+                            <div ng-show="form.$submitted || form.name.$touched">
+                                <label ng-show="form.name.$error.required" class="control-label" for="formName">Nazwa
+                                    produktu jest wymagana.</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h3>Składniki</h3>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nazwa składnika"
+                                       ng-model="newIngredient" name="ingredient">
+                <span class="input-group-btn">
+        				<button
+                                class="btn btn-primary"
+                                type="button"
+                                ng-click="vm.addIngredient(newIngredient); newIngredient=''">
+        					Dodaj
+        				</button>
+      				</span>
+                            </div>
+                            <div ng-repeat="ingredient in vm.ingredients">
+                                <label>
+                                    <input type="checkbox" checklist-model="vm.product.ingredients"
+                                           checklist-value="ingredient"> {{ingredient}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group"
+                             ng-class="{'has-error' : (form.$submitted || form.categoryDropdown.$touched) && form.categoryDropdown.$error.required}">
+                            <h3>Kategoria</h3>
+                            <select ng-model="vm.product.categoryId"
+                                    ng-options="category._id as category.name for category in vm.categories"
+                                    ng-change="vm.changeCategory(vm.product.categoryId)" class="form-control"
+                                    name="categoryDropdown" required="">
+                            </select>
+                            <div ng-show="form.$submitted || form.categoryDropdown.$touched">
+                                <label ng-show="form.categoryDropdown.$error.required" class="control-label">Kategoria
+                                    jest wymagana.</label>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-repeat="priceType in vm.currentCategory.priceTypes">
+                            <label for="">{{priceType}}</label>
+                            <input type="number" class="form-control" ng-model="vm.product.prices[$index]">
+                        </div>
+                        <input type="submit" ng-click="form.$valid && vm.updateProduct(vm.product)" value="Zapisz"
+                               class="btn btn-success"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

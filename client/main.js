@@ -9,4 +9,6 @@ import 'admin-lte/dist/js/demo.js';
 import 'sweetalert/dist/sweetalert.css';
 import 'sweetalert/dist/sweetalert.min.js';
 
+import 'angular-ui-notification/dist/angular-ui-notification.min.css';
+
 import { name as FoodService } from '../imports/ui/admin/components/foodservice/foodservice';
