@@ -21,7 +21,7 @@ pbastowski:angular-babel
 angular-templates
 fourseven:scss
 fortawesome:fontawesome
-twbs:bootstrap
 msavin:mongol
 aldeed:simple-schema
 aldeed:collection2
+twbs:bootstrap

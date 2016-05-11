@@ -7,7 +7,7 @@ import './productList.html';
 import {Products} from '../../../../api/products';
 
 class ProductList {
-    constructor($scope, $reactive, CompaniesService) {
+    constructor($scope, $reactive) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -15,8 +15,7 @@ class ProductList {
         this.helpers({
             products() {
                 return Products.find({});
-            },
-            companies: () => CompaniesService.getViewModelsForCurrentUser()
+            }
         });
     }
 

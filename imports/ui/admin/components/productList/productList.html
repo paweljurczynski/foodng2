@@ -4,33 +4,40 @@
         <small>Możesz tutaj dodawać, edytować, a także usuwać produkty</small>
     </h1>
 </section>
-<section class="content" >
+<section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <div class="box" >
+            <div class="box">
                 <div class="box-body">
                     <a href="/Products/Add" class="btn btn-success">Dodaj produkt</a>
-                    <div >
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>Nazwa</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="product in vm.products">
-                                <td>
-                                    <h4>{{product.name}}</h4>
-                                    <span ng-repeat="ingredient in product.ingredients" ng-if="product.ingredients">{{ingredient}}, </span>
-                                </td>
-                                <td class="text-right">
-                                    <a href="/Products/Edit/{{product._id}}" class="btn btn-large btn-primary glyphicon glyphicon-pencil"></a>
-                                    <a href="" class="btn btn-large btn-danger glyphicon glyphicon-trash" ng-click="vm.delete(product._id, product.name)"></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div ng-repeat="company in vm.companies">
+                        <div ng-repeat="category in company.categories">
+                            <hr>
+                            <h3>{{category.name}}</h3>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Nazwa</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="product in category.products">
+                                    <td>
+                                        <h4>{{product.name}}</h4>
+                                    <span ng-repeat="ingredient in product.ingredients"
+                                          ng-if="product.ingredients">{{ingredient}}, </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="/Products/Edit/{{product._id}}"
+                                           class="btn btn-large btn-primary glyphicon glyphicon-pencil"></a>
+                                        <a href="" class="btn btn-large btn-danger glyphicon glyphicon-trash"
+                                           ng-click="vm.delete(product._id, name)"></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

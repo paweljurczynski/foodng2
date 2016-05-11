@@ -10,15 +10,6 @@ import './foodservice.html';
 
 //COMPONENTS
 
-import {name as ProductList} from '../productList/productList';
-import {name as ProductAdd} from '../productAdd/productAdd';
-import {name as ProductEdit} from '../productEdit/productEdit';
-import {name as Navigation} from '../navigation/navigation';
-
-//SERVICES
-import {name as ProductsService } from '../../services/ProductsService';
-import {name as CompaniesService } from '../../services/CompaniesService';
-
 class FoodService {}
 
 const name = 'foodservice';
@@ -30,14 +21,7 @@ export default angular.module(name, [
     ngAnimate,
     Notifications,
     'checklist-model',
-    //COMPONENTS
-    ProductList,
-    ProductAdd,
-    ProductEdit,
-    Navigation,
-    //SERVICES
-    ProductsService,
-    CompaniesService
+
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,
