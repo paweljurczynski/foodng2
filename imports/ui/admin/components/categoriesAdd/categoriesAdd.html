@@ -1,0 +1,52 @@
+<section class="content-header">
+    <h1>
+        Nowy kategoria
+        <small>Wprowadź dane kategorii</small>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <form name="form" novalidate>
+                        <div class="form-group" ng-class="{'has-error' : (form.$submitted || form.name.$touched) && form.name.$error.required }">
+                            <label for="">Nazwa kategorii</label>
+                            <input type="text" ng-model="vm.newCategory.name" name="name" required="" class="form-control" id="formName" />
+                            <div ng-show="form.$submitted || form.name.$touched">
+                                <label ng-show="form.name.$error.required" class="control-label" for="formName">Nazwa kategorii jest wymagana.</label>
+                            </div>
+                        </div>
+                        <h3>Nagłówki cennika</h3>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Nowy nagłówek" ng-model="headerName">
+              <span class="input-group-btn">
+        <button class="btn btn-success" type="submit" ng-submit="vm.addHeader(headerName); headerName=''" ng-click="vm.addHeader(headerName); headerName=''">Dodaj</button>
+    </span>
+                        </div>
+                        <table class="table table-hover" ng-if="vm.newCategory.priceTypes[0]">
+                            <thead>
+                            <tr>
+                                <th>Nazwa</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="header in vm.newCategory.priceTypes track by $index">
+                                <th>
+                                    <input type="text" ng-model="vm.newCategory.priceTypes[$index]" class="form-control">
+                                </th>
+                                <th class="text-right">
+                                    <button type="button" class="btn btn-danger glyphicon glyphicon-trash" ng-click="vm.deleteHeader(header)"></button>
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <input type="submit" ng-click="form.$valid && vm.addCategory(vm.newCategory)" value="Dodaj kategorię" class="btn btn-success" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
