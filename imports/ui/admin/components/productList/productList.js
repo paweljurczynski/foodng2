@@ -12,6 +12,8 @@ class ProductList {
 
         $reactive(this).attach($scope);
 
+        this.zmienna = 4;
+        
         this.helpers({
             products() {
                 return Products.find({});
@@ -59,7 +61,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('Products', {
+        .state('admin.products', {
             url: '/Products',
             template: '<product-list></product-list>'
         });

@@ -6,25 +6,25 @@ import Notifications from 'angular-ui-notification';
 import 'checklist-model';
 
 import {Utils} from '../../../../utils/Utils';
-import './foodservice.html';
+import './layout.html';
 
 //COMPONENTS
 
 import {name as ProductList} from '../productList/productList';
 import {name as ProductAdd} from '../productAdd/productAdd';
 import {name as ProductEdit} from '../productEdit/productEdit';
-import {name as Navigation} from '../navigation/navigation';
 import {name as CategoriesList} from '../categoriesList/categoriesList';
 import {name as CategoryAdd}    from '../categoriesAdd/categoriesAdd';
 import {name as CategoryEdit} from '../categoriesEdit/categoriesEdit';
 //SERVICES
-import {name as ProductsService } from '../../services/ProductsService';
-import {name as CompaniesService } from '../../services/CompaniesService';
+import {name as ProductsService} from '../../services/ProductsService';
+import {name as CompaniesService} from '../../services/CompaniesService';
 import {name as CategoriesService} from '../../services/CategoriesService';
 
-class FoodService {}
+class appAdmin {
+}
 
-const name = 'foodservice';
+const name = 'appAdmin';
 
 // create a module
 export default angular.module(name, [
@@ -37,7 +37,6 @@ export default angular.module(name, [
     ProductList,
     ProductAdd,
     ProductEdit,
-    Navigation,
     CategoriesList,
     CategoryAdd,
     CategoryEdit,
@@ -48,16 +47,16 @@ export default angular.module(name, [
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,
-        controller: FoodService
+        controller: appAdmin
     })
     .config(config);
 
-function config($locationProvider, $urlRouterProvider, NotificationProvider) {
+function config($locationProvider, $urlRouterProvider, NotificationProvider, $stateProvider) {
     'ngInject';
 
     $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.otherwise('/Products');
+    $urlRouterProvider.otherwise('/admin/products');
 
     NotificationProvider.setOptions({
         delay: 10000,
@@ -68,4 +67,5 @@ function config($locationProvider, $urlRouterProvider, NotificationProvider) {
         positionX: 'right',
         positionY: 'top'
     });
+
 }

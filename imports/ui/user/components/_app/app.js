@@ -6,13 +6,13 @@ import Notifications from 'angular-ui-notification';
 import 'checklist-model';
 
 import {Utils} from '../../../../utils/Utils';
-import './foodservice.html';
+import './layout.html';
 
 //COMPONENTS
 
-class FoodService {}
+class appUser {}
 
-const name = 'foodservice';
+const name = 'appUser';
 
 // create a module
 export default angular.module(name, [
@@ -25,7 +25,7 @@ export default angular.module(name, [
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,
-        controller: FoodService
+        controller: appUser
     })
     .config(config);
 

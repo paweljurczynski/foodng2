@@ -5,7 +5,7 @@ import { Mongo } from 'meteor/mongo';
 
 const Categories = new Mongo.Collection('categories');
 
-CategoriesSchema = new SimpleSchema({
+let CategoriesSchema = new SimpleSchema({
     "companyId": {
         type: String,
         label: "Firma"

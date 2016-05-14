@@ -17,7 +17,7 @@ class ProductsService {
                 this.Notification.error(err.message);
             } else {
                 this.Notification.success('Produkt "' + vmProduct.name + '" dodany!');
-                this.$state.go('Products');
+                this.$state.go('admin.products');
             }
         });
     }
@@ -39,7 +39,7 @@ class ProductsService {
                     this.Notification.error(err.message);
                 } else {
                     this.Notification.success('Produkt "' + vmProduct.name + '" zaktualizowany!');
-                    this.$state.go('Products');
+                    this.$state.go('admin.products');
                 }
             }
         );

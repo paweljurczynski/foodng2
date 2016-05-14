@@ -58,7 +58,7 @@ class CategoriesService {
                     this.Notification.error(err.message);
                 } else {
                     this.Notification.success('Kategoria "' + category.name + '" zaktualizowana!');
-                    this.$state.go('Categories');
+                    this.$state.go('admin.categories');
                 }
             }
         );
@@ -77,7 +77,7 @@ class CategoriesService {
                 this.Notification.error(err.message);
             } else {
                 this.Notification.success('Kategoria "' + category.name + '" dodana!');
-                this.$state.go('Categories');
+                this.$state.go('admin.categories');
             }
         });
     }

@@ -60,7 +60,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('Categories', {
+        .state('admin.categories', {
             url: '/Categories',
             template: '<categories-list></categories-list>'
         });

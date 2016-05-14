@@ -48,7 +48,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('CategoryEdit', {
+        .state('admin.categoriesEdit', {
             url: '/Categories/Edit/:id',
             template: '<categories-edit></categories-edit>'
         });

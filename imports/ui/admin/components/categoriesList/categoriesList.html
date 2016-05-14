@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box" >
-                <div class="box-body"><a href="/Categories/Add" class="btn btn-success">Dodaj kategorię</a>
+                <div class="box-body"><a ui-sref="admin.categoriesAdd" class="btn btn-success">Dodaj kategorię</a>
                     <table class="table">
                         <thead>
                         <tr>
@@ -22,7 +22,7 @@
                                 {{category.name}}
                             </td>
                             <td class="text-right">
-                                <a href="/Categories/Edit/{{category._id}}" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+                                <a ui-sref="admin.categoriesEdit({id: category._id})" class="btn btn-primary glyphicon glyphicon-pencil"></a>
                                 <button type="button" class="btn btn-danger glyphicon glyphicon-trash" ng-click="vm.delete(category._id, category.name)"></button>
                             </td>
                         </tr>

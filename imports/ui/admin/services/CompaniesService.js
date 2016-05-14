@@ -44,6 +44,9 @@ class CompaniesService {
             "ownerId": "TempId"
         });
 
+        var arr = [1,2,3];
+        
+
         console.log(Companies.find().fetch(), currentCompany);
 
         let result = _.map(Companies.find().fetch(), () => {

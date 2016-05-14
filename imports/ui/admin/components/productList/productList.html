@@ -9,7 +9,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-body">
-                    <a href="/Products/Add" class="btn btn-success">Dodaj produkt</a>
+                    <a ui-sref="admin.productsAdd" class="btn btn-success">Dodaj produkt</a>
                     <div ng-repeat="company in vm.companies">
                         <div ng-repeat="category in company.categories">
                             <hr>
@@ -29,7 +29,7 @@
                                           ng-if="product.ingredients">{{ingredient}}, </span>
                                     </td>
                                     <td class="text-right">
-                                        <a href="/Products/Edit/{{product._id}}"
+                                        <a ui-sref="admin.productsEdit({id: product._id})"
                                            class="btn btn-large btn-primary glyphicon glyphicon-pencil"></a>
                                         <a href="" class="btn btn-large btn-danger glyphicon glyphicon-trash"
                                            ng-click="vm.delete(product._id, name)"></a>
