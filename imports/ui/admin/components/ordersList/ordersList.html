@@ -1,0 +1,60 @@
+<section class="content-header">
+    <h1>Zamowienia</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <article ng-repeat="order in vm.orders">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <span class="panel-title">ID zamówienia: <strong>{{order._id}}</strong></span>
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Nazwa</th>
+                                    <th>Rozmiar</th>
+                                    <th>Ilość</th>
+                                    <th>Cena jednostkowa</th>
+                                    <th class="text-right">Cena całkowita</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="product in order.products">
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.size }}</td>
+                                    <td>{{ product.qty }}</td>
+                                    <td>{{ product.prices[product.selectedPriceIndex] | currency }}</td>
+                                    <td class="text-right">{{ product.qty * product.prices[product.selectedPriceIndex] | currency }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">Dane kupującego</div>
+                                            <div class="panel-body">
+                                                <div>
+                                                    <strong>Adres: </strong>{{order.address}}
+                                                </div>
+                                                <div>
+                                                    <strong>Telefon: </strong>{{order.phone}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h3 class="text-right">Wartość zamówienia: <strong>{{order.total | currency}}</strong></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
