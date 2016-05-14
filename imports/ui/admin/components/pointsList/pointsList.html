@@ -1,0 +1,36 @@
+<section class="content-header">
+    <h1>
+        Punkty
+        <small>Możesz tutaj dodawać, edytować, a także usuwać punkty</small>
+    </h1>
+</section>
+<section class="content" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box" >
+                <div class="box-body">
+                    <a ui-sref="/Points/Add" class="btn btn-success">Dodaj punkt</a>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nazwa grupy</th>
+                            <th>Adres</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="point in vm.points">
+                            <td>{{point.name}}</td>
+                            <td>{{point.location.address}}</td>
+                            <td class="text-right">
+                                <a ui-sref="/Points/Editor/{{point._id}}" class="btn btn-large btn-primary glyphicon glyphicon-pencil"></a>
+                                <a ui-sref="" class="btn btn-large btn-danger glyphicon glyphicon-trash" ng-click="vm.delete(point._id, point.name)"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<section class="content-header">
+    <h1>Edycja {{vm.point.name}}</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <form name="form" novalidate>
+                        <div class="form-group" ng-class="{'has-error' : (form.$submitted || form.name.$touched) && form.name.$error.required }">
+                            <label for="">Nazwa punktu</label>
+                            <input type="text" ng-model="vm.point.name" name="name" required="" class="form-control" />
+                            <div ng-show="form.$submitted || form.name.$touched">
+                                <label ng-show="form.name.$error.required" class="control-label" for="formName">Nazwa punktu jest wymagana.</label>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error' : (form.$submitted || form.location.$touched) && form.location.$error.required }">
+                            <label for="">Adres</label>
+                            <input type="text" name="location" required="" class="form-control geocomplete" value="{{vm.point.location.address}}" />
+                            <div ng-show="form.$submitted || form.location.$touched">
+                                <label ng-show="form.location.$error.required" class="control-label" for="formName">Lokalizacja punktu jest wymagana.</label>
+                            </div>
+                        </div>
+                        <!-- <div class="details">
+                <div class="form-group">
+                  <label>Latitude</label>
+                  <input type="text" name="lat" ng-model="vm.newPoint.lat" class="form-control" geocomplete/>
+                </div>
+                <div class="form-group">
+                  <label>Longitude</label>
+                  <input type="text" name="lng" ng-model="vm.newPoint.lng" ng-trim="false" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" name="formatted_address" ng-model="vm.newPoint.address" ng-trim="false" class="form-control" />
+                </div>
+              </div> -->
+                        <br />
+                        <input type="submit" ng-click="form.$valid && vm.updatePoint(vm.point)" value="Zapisz" class="btn btn-success" />
+                        <br>
+                        <br>
+                    </form>
+                    <div class="col-md-12">
+                        <blaze-template name="pointMap"></blaze-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

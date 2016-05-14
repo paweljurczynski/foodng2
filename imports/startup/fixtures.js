@@ -88,7 +88,7 @@ Meteor.startup(()=> {
         }
 
         // if (Points.find().count() === 0) {
-        //     let points = [{
+        //     let points.js = [{
         //         companyId: "DsadSdasdDsR3A",
         //         name: "Pizzeria Piecykowa - Nierada"
         //         // sellers: [],
@@ -100,7 +100,7 @@ Meteor.startup(()=> {
         //         // workers: []
         //     }];
 
-        //     _.each(points, point => Points.insert(point));
+        //     _.each(points.js, point => Points.insert(point));
         // }
 
         if (Companies.find().count() === 0) {

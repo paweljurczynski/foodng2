@@ -11,6 +11,7 @@ class OrdersList {
         'ngInject';
 
         $reactive(this).attach($scope);
+        
         this.OrdersService = OrdersService;
 
         this.helpers({
@@ -51,8 +52,8 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('admin.orders', {
+        .state('admin.ordersList', {
             url: '/Orders',
-            template: '<ordersList-list></ordersList-list>'
+            template: '<orders-list></orders-list>'
         });
 }
