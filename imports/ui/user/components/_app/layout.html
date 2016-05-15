@@ -1,3 +1,42 @@
-﻿<h1>Stronka usera</h1>
+﻿<div class="client-layout">
+  <header class="clearfix">
+    <button type="button" class="navbar-toggle offcanvas-toggle" data-toggle="offcanvas"
+            data-target="#js-bootstrap-offcanvas">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
 
-<div ui-view=""></div>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-offcanvas navbar-offcanvas-touch" role="navigation"
+         id="js-bootstrap-offcanvas">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">FoodService</a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a ui-sref="user.restaurants">Restauracje</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="admin.products"><b>ADMIN</b></a></li>
+            <li><a href="#">Logowanie</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 client-sidebar">
+          <div class="panel panel-default">
+            <div class="panel-heading">Sidebar</div>
+            <div class="panel-body">Tresc konentu</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container user-wrapper">
+    <div class="row">
+      <div class="col-md-9">
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
+</div>

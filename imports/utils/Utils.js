@@ -6,6 +6,9 @@ import {CONSTANTS} from './constants';
 let Utils = {
     getTemplatePath(name){
         return `${CONSTANTS.ADMIN_COMPONENTS}/${name}/${name}.html`
+    },
+    getTemplatePathForUser(name){
+        return `${CONSTANTS.USER_COMPONENTS}/${name}/${name}.html`
     }
 }
 

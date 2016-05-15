@@ -1,16 +1,13 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-//AdminLTE
-import 'jquery-slimscroll/jquery.slimscroll.js';
-import 'admin-lte/dist/js/app.js';
-
 import 'sweetalert/dist/sweetalert.css';
 import 'sweetalert/dist/sweetalert.min.js';
 
 import 'angular-ui-notification/dist/angular-ui-notification.min.css';
 import '../imports/utils/error-messages';
 
+import 'angular-i18n/angular-locale_pl-pl';
 import {name as appAdmin} from '../imports/ui/admin/components/_app/app';
 import {name as appUser} from '../imports/ui/user/components/_app/app';
 
@@ -47,5 +44,5 @@ function config($locationProvider, $urlRouterProvider, $stateProvider) {
             templateUrl: 'imports/ui/user/components/_app/layout.html'
         });
 
-    $urlRouterProvider.otherwise('/Admin/Products');
+    $urlRouterProvider.otherwise('/User/Restaurants');
 }

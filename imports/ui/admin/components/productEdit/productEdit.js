@@ -20,6 +20,12 @@ class ProductEdit {
         this.currentCategory = Categories.find({_id: this.product.categoryId});
     }
 
+    changeCategory(categoryId) {
+        this.currentCategory = Categories.findOne({
+            _id: categoryId
+        });
+    }
+
     updateProduct(product) {
         this.ProductsService.update(product);
     }

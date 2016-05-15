@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div class="row" ng-repeat="restaurant in vm.restaurants">
+    <div class="col-md-12">
+      <a ui-sref="user.restaurantsOffer({ restaurantId: restaurant._id})" class="restaurant-item">
+        {{restaurant.name}}
+      </a>
+    </div>
+  </div>
+</div>

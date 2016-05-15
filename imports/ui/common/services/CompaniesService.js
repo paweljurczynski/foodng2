@@ -22,6 +22,20 @@ class CompaniesService {
         return this.currentCompany._id;
     }
 
+    getRestaurants(){
+        return Companies.find({});
+    }
+
+    getRestaurantById(_id){
+        let restaurant = Companies.findOne({_id});
+        if(restaurant){
+            console.log('Restaurant: ', restaurant);
+            let viewModel = this.getViewModelForCompany(restaurant, true);
+            console.log('Viewmodel: ', viewModel);
+            return viewModel;
+        }
+    }
+
     getCompaniesForCurrentUser() {
         console.log(this.getCurrentCompanyId());
         return Companies.find({
@@ -29,11 +43,11 @@ class CompaniesService {
         }).fetch();
     }
 
-    getViewModelForCompany(company) {
+    getViewModelForCompany(company, isClient = false) {
         let vmCompany = {
             _id: company._id,
             name: company.name,
-            categories: this._getCategoriesWithProducts(company)
+            categories: this._getCategoriesWithProducts(company, isClient)
         };
 
         return vmCompany;
@@ -58,7 +72,7 @@ class CompaniesService {
         return result;
     }
 
-    _getCategoriesWithProducts(company) {
+    _getCategoriesWithProducts(company, isClient = false) {
         let productsForThisCompany = Products.find({
             "companyId": company._id
         }).fetch();
@@ -75,6 +89,11 @@ class CompaniesService {
                     viewModelProducts.push(product);
                 }
             });
+
+            if(isClient){
+                viewModelProducts = viewModelProducts.filter(product => product.prices.length);
+            }
+
             return {
                 _id: category._id,
                 name: category.name,
@@ -82,6 +101,10 @@ class CompaniesService {
                 products: viewModelProducts
             };
         });
+
+        if(isClient){
+            return viewModelCategories.filter(category => category.products.length);
+        }
 
         return viewModelCategories;
     }

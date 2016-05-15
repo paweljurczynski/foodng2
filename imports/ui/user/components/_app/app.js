@@ -8,6 +8,15 @@ import 'checklist-model';
 import {Utils} from '../../../../utils/Utils';
 import './layout.html';
 
+import 'offcanvas-bootstrap/dist/css/bootstrap.offcanvas.min.css';
+import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas.min';
+
+
+import {name as Restaurants} from '../restaurants/restaurants';
+import {name as restaurantsOffer} from '../restaurantsOffer/restaurantsOffer';
+
+import {name as CompaniesService} from '../../../common/services/CompaniesService';
+
 //COMPONENTS
 
 class appUser {}
@@ -20,8 +29,11 @@ export default angular.module(name, [
     uiRouter,
     ngAnimate,
     Notifications,
-    'checklist-model',
-
+    //COMPONENTS
+    Restaurants,
+    restaurantsOffer,
+    //SERVICES
+    CompaniesService
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,
@@ -33,8 +45,6 @@ function config($locationProvider, $urlRouterProvider, NotificationProvider) {
     'ngInject';
 
     $locationProvider.html5Mode(true);
-
-    $urlRouterProvider.otherwise('/Products');
 
     NotificationProvider.setOptions({
         delay: 10000,

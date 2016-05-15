@@ -8,17 +8,21 @@ import 'checklist-model';
 import {Utils} from '../../../../utils/Utils';
 import './layout.html';
 
-//COMPONENTS
+//AdminLTE
+import 'jquery-slimscroll/jquery.slimscroll.js';
+import 'admin-lte/dist/js/app.js';
 
+//COMPONENTS
 import {name as ProductList} from '../productList/productList';
 import {name as ProductAdd} from '../productAdd/productAdd';
 import {name as ProductEdit} from '../productEdit/productEdit';
 import {name as CategoriesList} from '../categoriesList/categoriesList';
 import {name as CategoryAdd}    from '../categoriesAdd/categoriesAdd';
 import {name as CategoryEdit} from '../categoriesEdit/categoriesEdit';
+
 //SERVICES
 import {name as ProductsService} from '../../services/ProductsService';
-import {name as CompaniesService} from '../../services/CompaniesService';
+import {name as CompaniesService} from '../../../common/services/CompaniesService';
 import {name as CategoriesService} from '../../services/CategoriesService';
 
 class appAdmin {
