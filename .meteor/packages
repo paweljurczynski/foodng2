@@ -25,3 +25,5 @@ msavin:mongol
 aldeed:simple-schema
 aldeed:collection2
 twbs:bootstrap
+accounts-password
+carlosbaraza:accounts-ui-bootstrap-3-angular

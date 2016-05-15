@@ -36,6 +36,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
+        
         .state('user.restaurantsOffer', {
                 url: '/:restaurantId',
                 // params: {

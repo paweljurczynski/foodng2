@@ -21,6 +21,7 @@ const name = 'app';
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
+    'accounts.ui',
     appAdmin,
     appUser
 ]).component(name, {

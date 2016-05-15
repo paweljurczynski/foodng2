@@ -20,33 +20,9 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li><b><a ui-sref="user.restaurants" style="color:black;">USER</a></b></li>
+          <li><a ui-sref="user.restaurants">USER</a></li>
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/images/avatar.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ currentUser.username }}</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="/images/avatar.png" class="img-circle" alt="User Image">
-                <p>
-                  {{ currentUser.username }}
-                  <small>Super andrzej</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profil</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Wyloguj</a>
-                </div>
-              </li>
-            </ul>
-          </li>
+          <login-buttons></login-buttons>
           <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
