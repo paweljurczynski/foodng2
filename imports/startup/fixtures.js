@@ -2,7 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {Products} from '../api/products';
 import {Categories} from '../api/categories';
 import {Companies} from '../api/companies';
-
+import {Points} from '../api/points';
 Meteor.startup(()=> {
     if (Meteor.isServer) {
         if (Products.find().count() === 0) {
@@ -87,21 +87,26 @@ Meteor.startup(()=> {
             _.each(categories, category => Categories.insert(category));
         }
 
-        // if (Points.find().count() === 0) {
-        //     let points.js = [{
-        //         companyId: "DsadSdasdDsR3A",
-        //         name: "Pizzeria Piecykowa - Nierada"
-        //         // sellers: [],
-        //         // workers: []
-        //     }, {
-        //         companyId: "DsadSdasdDsR3A",
-        //         name: "Pizzeria Piecykowa - Wrzosowa"
-        //         // sellers: [],
-        //         // workers: []
-        //     }];
+         if (Points.find().count() === 0) {
+            let points = [//{
+              //  companyId: "DsadSdasdDsR3A",
+                // name: "Pizzeria Piecykowa - Nierada"
+                 // sellers: [],
+                 // workers: []
+            // }, 
+                {
+               // companyId: "DsadSdasdDsR3A",
+                name: "Pizzeria Piecykowa - Wrzosowa",
+               // location: {},
+               // locationtype: "main",
+                locationaddress: "abc"
+             // locationcoordirnates: 1, 2
+                // sellers: [],
+                 // workers: []
+            }];
 
-        //     _.each(points.js, point => Points.insert(point));
-        // }
+            _.each(points, point => Points.insert(point));
+         }
 
         if (Companies.find().count() === 0) {
             let companies = [{

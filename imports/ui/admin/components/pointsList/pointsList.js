@@ -2,7 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import {Utils} from '../../../../utils/Utils';
-
 import './pointsList.html';
 
 import {Points} from '../../../../api/points';

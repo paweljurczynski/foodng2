@@ -3,33 +3,33 @@ import { Mongo } from 'meteor/mongo';
 const Points = new Mongo.Collection("points");
 
 let PointsSchema = new SimpleSchema({
-    "companyId": {
-        type: String,
-        label: "Firma"
-    },
+   // "companyId": {
+     //   type: String,
+       // label: "Firma"
+   // },
     "name": {
         type: String,
         label: "Nazwa punktu",
         min: 3
     },
-    "location": {
-        type: Object,
-        label: "Lokalizacja"
-    },
-    "location.type": {
-        label: "Typ lokalizacji",
-        type: String
-    },
-    "location.address": {
+   // "location": {
+      //  type: Object,
+       // label: "Lokalizacja"
+  // },
+   // "locationtype": {
+     //   label: "Typ lokalizacji",
+      //  type: String
+    //},
+    "locationaddress": {
         label: "Adres punktu",
         type: String
     },
-    "location.coordirnates": {
+    "locationcoordirnates": {
         label: "Wspolrzedne",
         type: [Number],
         minCount: 2,
         decimal: true
-    }
+   }
 });
 
 Points.attachSchema(PointsSchema);
@@ -46,4 +46,4 @@ Points.allow({
     }
 })
 
-export { Points }
+export { Points };

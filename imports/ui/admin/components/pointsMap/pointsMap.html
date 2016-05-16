@@ -1,0 +1,7 @@
+{{vm.center}}
+
+<div class="angular-google-map-container">
+    <ui-gmap-google-map center="vm.location || vm.map.center" events="vm.map.events" zoom="vm.map.zoom">
+        <ui-gmap-marker coords="vm.location" options="vm.marker.options" events="vmmarker.events" idKey="points-location"></ui-gmap-marker>
+    </ui-gmap-google-map>
+</div>

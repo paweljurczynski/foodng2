@@ -1,3 +1,4 @@
+
 <section class="content-header">
     <h1>Nowy punkt</h1>
 </section>
@@ -8,9 +9,9 @@
                 <div class="box-body">
                     <form name="form" novalidate>
 
-                        <!--     <div class="form-group">
+                          <!-- <div class="form-group">
                     <select ng-model="vm.newPoint.companyId" ng-options="company._id as company.name for company in vm.companies" class="form-control"></select>
-                </div> -->
+                </div>-->
                         <div class="form-group" ng-class="{'has-error' : (form.$submitted || form.name.$touched) && form.name.$error.required }">
                             <label for="">Nazwa punktu</label>
                             <input type="text" ng-model="vm.newPoint.name" name="name" required="" class="form-control" id="formName" />
@@ -20,11 +21,28 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error' : (form.$submitted || form.location.$touched) && form.location.$error.required }">
                             <label for="">Adres</label>
-                            <input type="text" name="location" required="" class="form-control geocomplete" />
+                            <input id="geocomplete" type="text"  class="form-control"/>
+                            <input id="find" type="button" value="find"  />
+                                <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD7EX-nnGVrGglaGOsoE-2CdPUtnlrhKG4&libraries=places"></script>
+                                <script src="jquery.geocomplete.js"></script>
+
+                            <!-- <input  type="text" name="location" required=""  class="form-control geocomplete" />-->
                             <div ng-show="form.$submitted || form.location.$touched">
                                 <label ng-show="form.location.$error.required" class="control-label" for="formName">Lokalizacja punktu jest wymagana.</label>
+
+
+
+                               <div class="angular-google-map-container">
+                                    <ui-gmap-google-map center="vm.location || vm.map.center" events="vm.map.events" zoom="vm.map.zoom">
+                                        <ui-gmap-marker coords="vm.location" options="vm.marker.options" events="vmmarker.events" idKey="points-location"></ui-gmap-marker>
+                                    </ui-gmap-google-map>
+                                </div>
+
+
+
+
                             </div>
-                        </div>
+                            </div>
                         <!-- <div class="details">
                 <div class="form-group">
                   <label>Latitude</label>
@@ -39,13 +57,15 @@
                   <input type="text" name="formatted_address" ng-model="vm.newPoint.address" ng-trim="false" class="form-control" />
                 </div>
               </div> -->
+
                         <br />
                         <input type="submit" ng-click="form.$valid && vm.addPoint(vm.newPoint)" value="Dodaj punkt" class="btn btn-success" />
                         <br>
                         <br>
                     </form>
+
                     <div class="col-md-12">
-                        <blaze-template name="pointMap"></blaze-template>
+
                     </div>
                 </div>
             </div>

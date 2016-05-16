@@ -22,6 +22,8 @@ import {name as OrdersList} from '../ordersList/ordersList';
 import {name as PointsList} from '../pointsList/pointsList';
 import {name as PointsAdd} from '../pointsAdd/pointsAdd';
 import {name as PointsEdit} from '../pointsEdit/pointsEdit';
+import {name as PointsMap} from '../pointsMap/pointsMap';
+
 //SERVICES
 import {name as ProductsService} from '../../services/ProductsService';
 import {name as CompaniesService} from '../../services/CompaniesService';
@@ -54,6 +56,7 @@ export default angular.module(name, [
     PointsList,
     PointsAdd,
     PointsEdit,
+    PointsMap,
     //SERVICES
     ProductsService,
     CompaniesService,

@@ -4,6 +4,7 @@ import uiRouter from 'angular-ui-router';
 import {Utils} from '../../../../utils/Utils';
 import 'angular-simple-logger';
 import 'angular-google-maps';
+import {name as PointsMap} from '../pointsMap/pointsMap';
 
 import './pointsAdd.html';
 
@@ -16,17 +17,55 @@ class PointsAdd {
         this.CompaniesService = CompaniesService;
         this.PointsService = PointsService;
 
-        var formattedAddress, latitude, longitude;
+        let formattedAddress, latitude, longitude;
 
-        GoogleMaps.load({
-            libraries: 'geometry,places'
+
+        this.map = {
+            center: {
+                latitude: 45,
+                longitude: -73
+            },
+            zoom: 8,
+            events: {}
+        };
+
+        this.marker = {
+            options: {
+                draggable: true
+            },
+            events: {}
+
+        };
+
+        $(getElementById("geocomplete")).geocomplete({
+                 map: '.map',
+                mapOptions: {
+                    scrollwheel: true
+                },
+                details: 'details'
+            })
+
+            .bind("geocode:result", function(event, result) {
+                formattedAddress = result.formatted_address;
+                latitude = result.geometry.location.lat();
+                longitude = result.geometry.location.lng();
+            });
+        $("button.find").click(function(){
+            $(".geocomplete").trigger("geocode");
         });
+
+
+      //   GoogleMaps.load({
+        //    libraries: 'geometry,places'
+        //});
         
-        Template.pointMap.onRendered(function() {
+      /* Template.pointMap.onRendered(function() {
             this.autorun(function() {
-                if (GoogleMaps.loaded()) {
+               //if (GoogleMaps.loaded()) {
+                    
+                    
                     $(".geocomplete").geocomplete({
-                            map: '.map-canvas',
+                           // map: '.map-canvas',
                             mapOptions: {
                                 scrollwheel: true
                             },
@@ -37,10 +76,14 @@ class PointsAdd {
                             latitude = result.geometry.location.lat();
                             longitude = result.geometry.location.lng();
                         });
-                }
+               // }
             });
-        });
+        }); */
+
     }
+
+
+
     addPoint (vmPoint) {
     let point = {
         name: vmPoint.name,
@@ -55,8 +98,8 @@ class PointsAdd {
     PointsService.add(point);
 }
 
-    
-    
+
+
     
 }
 
@@ -67,7 +110,8 @@ export default angular.module(name, [
         angularMeteor,
         uiRouter,
         'uiGmapgoogle-maps',
-        'nemLogging'
+        'nemLogging',
+        PointsMap
     ])
     .component(name, {
         templateUrl: Utils.getTemplatePath(name),
@@ -79,7 +123,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('admin.pointsEdit', {
+        .state('admin.pointsAdd', {
             url: '/Points/Add',
             template: '<points-add></points-add>'
         });

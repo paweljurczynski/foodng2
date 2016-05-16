@@ -5,6 +5,8 @@ import {Utils} from '../../../../utils/Utils';
 import 'angular-simple-logger';
 import 'angular-google-maps';
 
+import {name as PointsMap} from '../pointsMap/pointsMap';
+
 import './pointsEdit.html';
 
 import {Points} from '../../../../api/points';
@@ -24,6 +26,8 @@ class PointsEdit {
         Template.pointMap.onRendered(function() {
             this.autorun(function() {
                 if (GoogleMaps.loaded()) {
+
+
                     $(".geocomplete").geocomplete({
                             map: '.map-canvas',
                             mapOptions: {
@@ -58,7 +62,8 @@ export default angular.module(name, [
         angularMeteor,
         uiRouter,
         'uiGmapgoogle-maps',
-        'nemLogging'
+        'nemLogging',
+        PointsMap
     ])
     .component(name, {
         templateUrl: Utils.getTemplatePath(name),
