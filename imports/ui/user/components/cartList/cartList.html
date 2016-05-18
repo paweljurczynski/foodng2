@@ -1,0 +1,94 @@
+<section class="content-header">
+    <h1>
+        Koszyk
+        <small>To tutaj mozesz zlozyc zamowienie</small>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <h2 ng-if="!vm.cart.length">Pusto tutaj... Dodaj coś do koszyka :)</h2>
+                    <table class="table table-hover" ng-if="vm.cart.length">
+                        <thead>
+                        <tr>
+                            <th>Produkt</th>
+                            <th>Rozmiar</th>
+                            <th>Ilość</th>
+                            <th class="text-center">Cena</th>
+                            <th class="text-right">Total</th>
+                            <th> </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="product in vm.cart track by $index">
+                            <td class="col-sm-6 col-md-5">{{vm.product.name}}</td>
+                            <td class="col-sm-2 col-md-2">{{vm.product.size}}</td>
+                            <td class="col-sm-1 col-md-2 text-right">
+                                <input type="number" class="form-control" value="{{vm.product.qty}}" ng-model="product.qty" min="1">
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>{{ vm.product.prices[product.selectedPriceIndex] | currency }}</strong></td>
+                            <td class="col-sm-1 col-md-1 text-right"><strong>{{ vm.product.qty * product.prices[product.selectedPriceIndex] | currency }}</strong></td>
+                            <td class="col-sm-1 col-md-1 text-right">
+                                <button type="button" class="btn btn-danger" ng-click="vm.deleteFromCart(product._id)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        <!--<tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <h5>Subtotal</h5></td>
+                <td class="text-right">
+                    <h5>
+                        <strong ng-model="cart.total">{{ vm.getTotal(vm.cart) | currency }}</strong>
+                    </h5>
+                </td>
+            </tr>-->
+                        <!--<tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <h5>Estimated shipping</h5>
+                </td>
+                <td class="text-right">
+                    <h5>
+                        <strong ng-model="cart.shipping">{{ 3 | currency }}</strong>
+                    </h5>
+                </td>
+            </tr>-->
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h3>Total</h3></td>
+                            <td class="text-right">
+                                <h3><strong>{{ vm.total(vm.cart) | currency }}</strong></h3></td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <a ui-sref="Index" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Kontunuuj zakupy
+                                </a>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success" ng-click="vm.saveCart(vm.cart, vm.total)">
+                                    Zamów <span class="glyphicon glyphicon-play"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
