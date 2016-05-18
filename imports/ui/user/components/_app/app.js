@@ -20,6 +20,7 @@ import {name as cartList} from '../cartList/cartList';
 
 import {name as CompaniesService} from '../../../common/services/CompaniesService';
 import {name as CartService} from '../services/cartService';
+import {name as OrdersService} from '../services/ordersService';
 
 //COMPONENTS
 
@@ -40,7 +41,8 @@ export default angular.module(name, [
     cartList,
     //SERVICES
     CompaniesService,
-    CartService
+    CartService,
+    OrdersService
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,

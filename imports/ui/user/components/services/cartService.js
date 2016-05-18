@@ -1,5 +1,5 @@
 import angular from 'angular';
-import localstorage from 'angular-local-storage';
+import localStorage from 'angular-local-storage';
 import {Products} from '../../../../api/products';
 import {Categories} from '../../../../api/categories';
 
@@ -11,13 +11,14 @@ class CartService {
         this.$stateParams = $stateParams;
         this.Notification = Notification;
 
-        let cart = localstorage.get('cart') ? localstorage.get('cart') : [];
+        let cart = localStorage.get('cart') ? localStorage.get('cart') : [];
+        let currentProduct = _.findWhere(cart, {'_id': productId, 'selectedPriceIndex': priceIndex});
+
 
     }
 
-        addToCart (productId, priceIndex) {
+    addToCart (productId, priceIndex) {
 
-          // ->?  let currentProduct = _.findWhere(cart, {'_id': productId, 'selectedPriceIndex': priceIndex});
 
             if (currentProduct) {
                 currentProduct.qty++;
@@ -36,11 +37,11 @@ class CartService {
         };
 
         updateCart(newCart) {
-            localstorage.set('cart', newCart);
+            localStorage.set('cart', newCart);
         }
 
         reset () {
-            localstorage.clear('cart');
+            localStorage.clear('cart');
         }
 
         deleteFromCart(productId)  {
