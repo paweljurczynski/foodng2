@@ -4,18 +4,18 @@ import uiRouter from 'angular-ui-router';
 import {Utils} from '../../../../utils/Utils';
 
 
-import './cartList.html';
+import './cart.html';
 
-class CartList{
+class Cart{
     constructor ($reactive, $scope, $state, OrdersService, CartService) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
         this.cart = CartService.getCart();
-
-        this.total(cart)
-        CartService.getTotal(cart);
+        console.log(this.cart);
+        //this.total(this.cart)
+        this.getTotal = (cart) => CartService.getTotal(cart);
     }
 
         deleteFromCart (productId) {
@@ -72,7 +72,7 @@ class CartList{
 
 
 
-const name = "cartList";
+const name = "cart";
 
 // create a module
 export default angular.module(name, [
@@ -82,16 +82,16 @@ export default angular.module(name, [
     .component(name, {
         templateUrl: Utils.getTemplatePathForUser(name),
         controllerAs: 'vm',
-        controller: CartList
+        controller: Cart
     })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('user.cartList', {
+        .state('user.cart', {
             url: '/Cart',
-            template: '<cart-list></cart-list>'
+            template: '<cart></cart>'
 
         });
 }

@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
-import localStorage from 'angular-local-storage';
+import localStorageService from 'angular-local-storage';
 import Notifications from 'angular-ui-notification';
 import 'checklist-model';
 
@@ -15,12 +15,12 @@ import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas.min';
 
 import {name as Restaurants} from '../restaurants/restaurants';
 import {name as restaurantsOffer} from '../restaurantsOffer/restaurantsOffer';
-import {name as cartList} from '../cartList/cartList';
+import {name as Cart} from '../cart/cart';
 
 
 import {name as CompaniesService} from '../../../common/services/CompaniesService';
-import {name as CartService} from '../services/cartService';
-import {name as OrdersService} from '../services/ordersService';
+import {name as CartService} from '../../services/CartService';
+import {name as OrdersService} from '../../services/OrdersService';
 
 //COMPONENTS
 
@@ -34,11 +34,11 @@ export default angular.module(name, [
     uiRouter,
     ngAnimate,
     Notifications,
-    localStorage,
+    localStorageService,
     //COMPONENTS
     Restaurants,
     restaurantsOffer,
-    cartList,
+    Cart,
     //SERVICES
     CompaniesService,
     CartService,

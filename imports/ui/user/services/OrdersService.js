@@ -1,6 +1,4 @@
 import angular from 'angular';
-import {Products} from '../../../../api/products';
-import {Categories} from '../../../../api/categories';
 
 class OrdersService {
     constructor (Notification, $state) {

@@ -9,13 +9,18 @@ import {Utils} from '../../../../utils/Utils';
 import './restaurantsOffer.html'
 
 class RestaurantsOffer {
-    constructor($scope, $stateParams, $reactive, CompaniesService) {
+    constructor($scope, $stateParams, $reactive, CompaniesService, CartService) {
         'ngInject';
         $reactive(this).attach($scope);
         console.log($stateParams);
+        this.CartService = CartService;
         this.helpers({
             restaurant: () => CompaniesService.getRestaurantById($stateParams.restaurantId)
         });
+    }
+
+    addToCart(productId, priceIndex){
+        this.CartService.addToCart(productId, priceIndex);
     }
 }
 
@@ -38,7 +43,7 @@ function config($stateProvider) {
     $stateProvider
         
         .state('user.restaurantsOffer', {
-                url: '/:restaurantId',
+                url: '/Restarurants/:restaurantId',
                 // params: {
                 //     restaurantName: {
                 //         value: '',

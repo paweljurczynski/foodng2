@@ -23,13 +23,13 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="product in vm.cart track by $index">
-                            <td class="col-sm-6 col-md-5">{{vm.product.name}}</td>
-                            <td class="col-sm-2 col-md-2">{{vm.product.size}}</td>
+                            <td class="col-sm-6 col-md-5">{{product.name}}</td>
+                            <td class="col-sm-2 col-md-2">{{product.size}}</td>
                             <td class="col-sm-1 col-md-2 text-right">
-                                <input type="number" class="form-control" value="{{vm.product.qty}}" ng-model="product.qty" min="1">
+                                <input type="number" class="form-control" value="{{product.qty}}" ng-model="product.qty" min="1">
                             </td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>{{ vm.product.prices[product.selectedPriceIndex] | currency }}</strong></td>
-                            <td class="col-sm-1 col-md-1 text-right"><strong>{{ vm.product.qty * product.prices[product.selectedPriceIndex] | currency }}</strong></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>{{ product.prices[product.selectedPriceIndex] | currency }}</strong></td>
+                            <td class="col-sm-1 col-md-1 text-right"><strong>{{ product.qty * product.prices[product.selectedPriceIndex] | currency }}</strong></td>
                             <td class="col-sm-1 col-md-1 text-right">
                                 <button type="button" class="btn btn-danger" ng-click="vm.deleteFromCart(product._id)">
                                     <span class="glyphicon glyphicon-trash"></span>
