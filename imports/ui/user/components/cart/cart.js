@@ -13,8 +13,6 @@ class Cart {
         $reactive(this).attach($scope);
         this.CartService = CartService;
         this.cart = CartService.getCart();
-        console.log(this.cart);
-        //this.total(this.cart)
         this.total = (cart) => CartService.getTotal(cart);
     }
 

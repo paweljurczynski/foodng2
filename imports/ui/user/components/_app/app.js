@@ -14,7 +14,8 @@ import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas.min';
 
 
 import {name as Restaurants} from '../restaurants/restaurants';
-import {name as restaurantsOffer} from '../restaurantsOffer/restaurantsOffer';
+import {name as RestaurantsOffer} from '../restaurantsOffer/restaurantsOffer';
+import {name as OrderForm} from '../orderForm/orderForm';
 import {name as Cart} from '../cart/cart';
 
 
@@ -37,9 +38,10 @@ export default angular.module(name, [
     localStorageService,
     //COMPONENTS
     Restaurants,
-    restaurantsOffer,
-    Cart,
+    RestaurantsOffer,
+    OrderForm,
     //SERVICES
+    Cart,
     CompaniesService,
     CartService,
     OrdersService
