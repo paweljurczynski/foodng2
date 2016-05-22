@@ -1,0 +1,45 @@
+.cart{
+  &-item{
+    border-bottom: 1px solid #c2c2c2;
+    padding: 8px;
+
+    &-name{
+      font-size:16px;
+      margin-bottom:3px;
+      font-weight:400;
+    }
+
+    &-desc{
+      font-size:12px;
+    }
+
+    &-price{
+      align-self: flex-end;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    &-delete{
+      cursor: pointer;
+      padding: 0 0 10px 10px;
+    }
+    >div{
+      display: flex;
+      justify-content:space-between;
+    }
+  }
+
+  &-total{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    font-size: 16px;
+    &-price{
+      font-weight:600;
+    }
+  }
+
+  &-no-items{
+    padding: 8px;
+  }
+}

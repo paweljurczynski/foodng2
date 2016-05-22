@@ -69,15 +69,15 @@
   font-size: 26px;
 }
 
-.navbar-fixed-top .container{
-  position: relative;
-}
-
-.client-sidebar{
-  position: absolute;
-  top: 70px;
-  right:0;
-}
+//.navbar-fixed-top .container{
+//  position: relative;
+//}
+//
+//.client-sidebar{
+//  position: absolute;
+//  top: 70px;
+//  right:0;
+//}
 
 $defaultColor: white;
 
@@ -92,6 +92,10 @@ $defaultColor: white;
   &-default > &-heading{
     background: $defaultColor;
   }
+
+  &-body{
+    padding:0;
+  }
 }
 
 .btn{
@@ -100,4 +104,8 @@ $defaultColor: white;
   &-default{
     background: $defaultColor;
   }
+}
+
+.no-padding{
+  padding:0;
 }

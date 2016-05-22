@@ -6,70 +6,64 @@ import {Utils} from '../../../../utils/Utils';
 
 import './cart.html';
 
-class Cart{
-    constructor ($reactive, $scope, $state, OrdersService, CartService) {
+class Cart {
+    constructor($reactive, $scope, $state, OrdersService, CartService) {
         'ngInject';
 
         $reactive(this).attach($scope);
-
+        this.CartService = CartService;
         this.cart = CartService.getCart();
         console.log(this.cart);
         //this.total(this.cart)
-        this.getTotal = (cart) => CartService.getTotal(cart);
+        this.total = (cart) => CartService.getTotal(cart);
     }
 
-        deleteFromCart (productId) {
-            CartService.deleteFromCart(productId);
-            this.cart = _.without(this.cart, _.findWhere(this.cart, { _id: productId }));
-             swal({
-                title: "Jesteś pewien?",
-                 text: "Próbujesz produkt ze swojego koszyka.",
-                 type: "warning",
-                 showCancelButton: true,
-                 confirmButtonColor: "#DD6B55",
-                 confirmButtonText: "Tak, usuń go!",
-                cancelButtonText: "Anuluj",
-                 closeOnConfirm: false,
-                 html: false
-             }, function () {
-                 CartService.deleteFromCart(productId);
-                swal("Usunięto!",
-                     "Produkt został usunięty z koszyka",
-                     "success");
-             });
-        }
-
-        saveCart (cart, total) {
-            let order = {
-                userId: "UserId",
-                //orderId: incrementCounter('countCollection', 'defaultCounter'),
-                products: CartService.getCart(),
-                total: total(cart),
-                address: "Przykładowy adres (pozniej pobierany z formularza)"
-            }
-
-            swal({
-                title: "Jesteś pewien?",
-                text: "Przyciskiem zamów potwierdzasz zamówienie.",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Zamów",
-                cancelButtonText: "Anuluj",
-                closeOnConfirm: false,
-                html: false
-            }, function () {
-                OrdersService.addOrder(order);
-                CartService.reset();
-            });
-        }
+    deleteFromCart(productId) {
+        this.CartService.deleteFromCart(productId);
+        this.cart = _.without(this.cart, _.findWhere(this.cart, {_id: productId}));
+        // swal({
+        //     title: "Jesteś pewien?",
+        //     text: "Próbujesz produkt ze swojego koszyka.",
+        //     type: "warning",
+        //     showCancelButton: true,
+        //     confirmButtonColor: "#DD6B55",
+        //     confirmButtonText: "Tak, usuń go!",
+        //     cancelButtonText: "Anuluj",
+        //     closeOnConfirm: false,
+        //     html: false
+        // }, function () {
+        //     CartService.deleteFromCart(productId);
+        //     swal("Usunięto!",
+        //         "Produkt został usunięty z koszyka",
+        //         "success");
+        // });
     }
 
+    saveCart(cart, total) {
+        let order = {
+            userId: "UserId",
+            //orderId: incrementCounter('countCollection', 'defaultCounter'),
+            products: CartService.getCart(),
+            total: total(cart),
+            address: "Przykładowy adres (pozniej pobierany z formularza)"
+        }
 
-
-
-
-
+        swal({
+            title: "Jesteś pewien?",
+            text: "Przyciskiem zamów potwierdzasz zamówienie.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Zamów",
+            cancelButtonText: "Anuluj",
+            closeOnConfirm: false,
+            html: false
+        }, function () {
+            OrdersService.addOrder(order);
+            CartService.reset();
+        });
+    }
+}
 
 
 const name = "cart";
