@@ -15,7 +15,7 @@
 }
 .fade.ng-enter,
 .fade.ng-leave {
-  transition: transform 600ms cubic-bezier(.12,.88,.37,.99), opacity 650ms linear;
+  transition: transform 600ms cubic-bezier(.12,.88,.37,.99), opacity 350ms linear;
 }
 .fade.ng-enter {
   transform: translate3d(15%,0,0);
@@ -56,6 +56,7 @@
 
 .user-wrapper{
   margin-top:60px;
+  position: relative;
 }
 
 .restaurant-item{
@@ -69,15 +70,15 @@
   font-size: 26px;
 }
 
-.navbar-fixed-top .container{
-  position: relative;
-}
-
-.client-sidebar{
-  position: absolute;
-  top: 70px;
-  right:0;
-}
+//.navbar-fixed-top .container{
+//  position: relative;
+//}
+//
+//.client-sidebar{
+//  position: absolute;
+//  top: 70px;
+//  right:0;
+//}
 
 $defaultColor: white;
 
@@ -92,12 +93,20 @@ $defaultColor: white;
   &-default > &-heading{
     background: $defaultColor;
   }
+
+  &-body{
+    padding:0;
+  }
 }
 
 .btn{
-  border-radius: 0;
+  //border-radius: 0;
 
   &-default{
     background: $defaultColor;
   }
+}
+
+.no-padding{
+  padding:0;
 }

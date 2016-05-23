@@ -1,26 +1,36 @@
-<h1>{{vm.restaurant.name}}</h1>
-
-<div ng-repeat="category in vm.restaurant.categories">
-  <h3>{{category.name}}</h3>
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>Nazwa</th>
-      <th ng-repeat="header in category.priceTypes">{{header}}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="product in category.products">
-      <td>
-        <h4>{{product.name}}</h4>
-        <span ng-repeat="ingredient in product.ingredients" ng-if="product.ingredients">{{ingredient}}, </span>
-      </td>
-      <td ng-repeat="header in category.priceTypes track by $index" class="td-small">
-        <button type="button" class="btn btn-large btn-default" ng-if="product.prices[$index]" ng-click="vm.addToCart(product._id, $index)">
-          <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>--> {{ product.prices[$index] | currency }}
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+<div class="col-md-9">
+  <h1>{{vm.restaurant.name}}</h1>
+  <div ng-repeat="category in vm.restaurant.categories">
+    <h3>{{category.name}}</h3>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th ng-repeat="header in category.priceTypes">{{header}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="product in category.products">
+        <td>
+          <h4>{{product.name}}</h4>
+          <span ng-repeat="ingredient in product.ingredients" ng-if="product.ingredients">{{ingredient}}, </span>
+        </td>
+        <td ng-repeat="header in category.priceTypes track by $index" class="td-small">
+          <button type="button" class="btn btn-large btn-default" ng-if="product.prices[$index]"
+                  ng-click="vm.addToCart(product._id, $index)">
+            <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>--> {{ product.prices[$index] | currency }}
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="col-md-3 client-sidebar">
+  <div class="panel panel-default">
+    <div class="panel-heading">Koszyk</div>
+    <div class="panel-body">
+      <cart></cart>
+    </div>
+  </div>
 </div>

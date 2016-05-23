@@ -16,27 +16,20 @@
         </div>
         <div>
           <ul class="nav navbar-nav">
-            <li class="active"><a ui-sref="user.restaurants">Restauracje</a></li>
+            <li><a ui-sref="user.restaurants">Restauracje</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a ui-sref="admin.products"><b>ADMIN</b></a></li>
             <login-buttons></login-buttons>
           </ul>
         </div>
-        <div class="col-md-3 client-sidebar">
-          <div class="panel panel-default">
-            <div class="panel-heading">Sidebar</div>
-            <div class="panel-body">Tresc konentu</div>
-          </div>
-        </div>
       </div>
     </nav>
   </header>
   <div class="container user-wrapper">
     <div class="row">
-      <div class="col-md-9">
-        <div ui-view></div>
-      </div>
+      <div class="fade"  ui-view></div>
+
     </div>
   </div>
 </div>

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 no-padding">
+      <div ng-if="vm.cart.length">
+        <div class="cart-item" ng-repeat="product in vm.cart track by $index">
+          <div>
+            <span class="cart-item-name">{{product.name}}</span>
+            <a class="cart-item-delete" ng-click="vm.deleteFromCart(product._id)">&times;</a>
+          </div>
+          <div>
+            <span class="cart-item-desc">{{product.size}}, Ilość: {{product.qty}}</span>
+            <span class="cart-item-price">{{ product.qty * product.prices[product.selectedPriceIndex] | currency }}</span>
+          </div>
+        </div>
+        <div class="cart-total" >
+          <span>Razem: </span>
+          <span class="cart-total-price">{{ vm.total(vm.cart) | currency }}</span>
+        </div>
+        <div class="cart-buttons">
+          <a ui-sref="user.orderForm" class="btn btn-default">Przejdź do kasy</a>
+        </div>
+    </div>
+    </div>
+    <div ng-if="!vm.cart.length" class="cart-no-items">Pusto tutaj... Dodaj coś do koszyka :)</div>
+  </div>
+</div>
