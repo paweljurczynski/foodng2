@@ -11,8 +11,14 @@ class OrderForm {
     constructor($scope, $reactive, CartService ) {
         'ngInject';
         $reactive(this).attach($scope);
+        this.CartService = CartService;
         this.cart = CartService.getCart();
         this.total = (cart) => CartService.getTotal(cart);
+    }
+
+    deleteFromCart(productId) {
+        this.CartService.deleteFromCart(productId);
+        this.cart = _.without(this.cart, _.findWhere(this.cart, {_id: productId}));
     }
 }
 

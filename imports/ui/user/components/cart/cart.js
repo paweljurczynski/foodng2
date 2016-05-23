@@ -19,22 +19,6 @@ class Cart {
     deleteFromCart(productId) {
         this.CartService.deleteFromCart(productId);
         this.cart = _.without(this.cart, _.findWhere(this.cart, {_id: productId}));
-        // swal({
-        //     title: "Jesteś pewien?",
-        //     text: "Próbujesz produkt ze swojego koszyka.",
-        //     type: "warning",
-        //     showCancelButton: true,
-        //     confirmButtonColor: "#DD6B55",
-        //     confirmButtonText: "Tak, usuń go!",
-        //     cancelButtonText: "Anuluj",
-        //     closeOnConfirm: false,
-        //     html: false
-        // }, function () {
-        //     CartService.deleteFromCart(productId);
-        //     swal("Usunięto!",
-        //         "Produkt został usunięty z koszyka",
-        //         "success");
-        // });
     }
 
     saveCart(cart, total) {
