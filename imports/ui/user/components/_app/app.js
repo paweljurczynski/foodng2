@@ -20,8 +20,8 @@ import {name as Cart} from '../cart/cart';
 
 
 import {name as CompaniesService} from '../../../common/services/CompaniesService';
+import {name as OrdersService} from '../../../common/services/OrdersService';
 import {name as CartService} from '../../services/CartService';
-import {name as OrdersService} from '../../services/OrdersService';
 
 //COMPONENTS
 
@@ -36,6 +36,7 @@ export default angular.module(name, [
     ngAnimate,
     Notifications,
     localStorageService,
+    OrdersService,
     //COMPONENTS
     Restaurants,
     RestaurantsOffer,
@@ -43,8 +44,7 @@ export default angular.module(name, [
     //SERVICES
     Cart,
     CompaniesService,
-    CartService,
-    OrdersService
+    CartService
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,

@@ -24,6 +24,7 @@ import {name as CategoryEdit} from '../categoriesEdit/categoriesEdit';
 import {name as ProductsService} from '../../services/ProductsService';
 import {name as CompaniesService} from '../../../common/services/CompaniesService';
 import {name as CategoriesService} from '../../services/CategoriesService';
+import {name as OrdersService} from '../../../common/services/OrdersService';
 
 class appAdmin {
 }
@@ -47,7 +48,8 @@ export default angular.module(name, [
     //SERVICES
     ProductsService,
     CompaniesService,
-    CategoriesService
+    CategoriesService,
+    OrdersService
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,

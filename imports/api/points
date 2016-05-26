@@ -44,6 +44,6 @@ Points.allow({
     remove: () => {
         return true;
     }
-})
+});
 
 export { Points }

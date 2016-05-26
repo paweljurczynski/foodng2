@@ -40,6 +40,6 @@ Products.allow({
     remove: () => {
         return true;
     }
-})
+});
 
 export { Products };

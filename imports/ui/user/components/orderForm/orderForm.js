@@ -8,17 +8,23 @@ import {Utils} from '../../../../utils/Utils';
 import './orderForm.html';
 
 class OrderForm {
-    constructor($scope, $reactive, CartService ) {
+    constructor($scope, $reactive, CartService,OrdersService) {
         'ngInject';
         $reactive(this).attach($scope);
         this.CartService = CartService;
+        this.OrdersService = OrdersService;
         this.cart = CartService.getCart();
+        this.order = {}; //fills in view
         this.total = (cart) => CartService.getTotal(cart);
     }
 
     deleteFromCart(productId) {
         this.CartService.deleteFromCart(productId);
         this.cart = _.without(this.cart, _.findWhere(this.cart, {_id: productId}));
+    }
+
+    createOrder(){
+        this.OrdersService.createOrder(this.order);
     }
 }
 

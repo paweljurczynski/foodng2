@@ -53,7 +53,7 @@
         <option val="onDelivery" selected>Płatność przy odbiorze</option>
       </select>
     </div>
-    <input type="submit" ng-click="form.$valid" value="Złóż zamówienie" class="btn btn-success"/>
+    <input type="submit" ng-click="form.$valid && vm.createOrder()" value="Złóż zamówienie" class="btn btn-success"/>
   </form>
   <br>
 </div>

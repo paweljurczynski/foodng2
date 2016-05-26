@@ -11,10 +11,7 @@ class CartService {
         this.Notification = Notification;
         this.localStorageService = localStorageService;
         this.cart = localStorageService.get('cart') || [];
-
-
-
-    }
+            }
 
     addToCart(productId, priceIndex) {
         let currentProduct = _.findWhere(this.cart, {'_id': productId, 'selectedPriceIndex': priceIndex});
@@ -23,11 +20,17 @@ class CartService {
             this.Notification.success('Dodano do koszyka "' + currentProduct.name + '".');
         } else {
             let product = Products.findOne({_id: productId});
-            console.log(product, productId, priceIndex);
-            let productCategory = Categories.findOne({_id: product.categoryId});
-            product.size = productCategory.priceTypes[priceIndex];
-            product.selectedPriceIndex = priceIndex;
-            product.qty = 1;
+            let category = Categories.findOne({_id: product.categoryId});
+            Object.assign(product, {
+                    categoryName: category.name,
+                    size: category.priceTypes[priceIndex],
+                    selectedPriceIndex: priceIndex,
+                    price: product.prices[priceIndex],
+                    qty: 1
+            });
+
+            console.log('Product from CartService: ', product);
+
             this.cart.push(product);
             this.Notification.success('Dodano do koszyka "' + product.name + '".');
         }
@@ -51,7 +54,7 @@ class CartService {
 
     getTotal(cart) {
         let total = _.reduce(cart, (acc, product) => {
-            let productTotal = product.prices[product.selectedPriceIndex] * product.qty;
+            let productTotal = product.price * product.qty;
             return acc + productTotal;
         }, 0);
 

@@ -28,7 +28,7 @@ class Cart {
             products: CartService.getCart(),
             total: total(cart),
             address: "Przykładowy adres (pozniej pobierany z formularza)"
-        }
+        };
 
         swal({
             title: "Jesteś pewien?",
