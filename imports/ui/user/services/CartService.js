@@ -42,9 +42,9 @@ class CartService {
         this.localStorageService .set('cart', newCart);
     }
 
-    reset() {
-        this.localStorageService .clear('cart');
-        this.localStorageService .clear('cart');
+    clearCart() {
+        this.localStorageService .set('cart', []);
+        this.cart = [];
     }
 
     deleteFromCart(productId) {
@@ -52,7 +52,7 @@ class CartService {
         this.updateCart(this.cart);
     }
 
-    getTotal(cart) {
+    getTotal(cart = this.getCart()) {
         let total = _.reduce(cart, (acc, product) => {
             let productTotal = product.price * product.qty;
             return acc + productTotal;

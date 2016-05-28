@@ -13,7 +13,8 @@ class OrdersService {
         this.CartService = CartService;
     }
 
-    createOrder(userData){
+    createOrder(userData, total){
+        console.log(userData, total);
         swal({
             title: "Jesteś pewien?",
             text: "Przyciskiem zamów potwierdzasz zamówienie.",
@@ -27,8 +28,10 @@ class OrdersService {
         }, () => {
             Orders.insert({
                 userData,
+                total: this.CartService.getTotal(),
                 products: this.CartService.getCart()
             });
+            this.CartService.clearCart();
             swal("Zrobione!",
                 "Zamówienie złożone.",
                 "success");

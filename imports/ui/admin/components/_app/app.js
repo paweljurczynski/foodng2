@@ -19,12 +19,13 @@ import {name as ProductEdit} from '../productEdit/productEdit';
 import {name as CategoriesList} from '../categoriesList/categoriesList';
 import {name as CategoryAdd}    from '../categoriesAdd/categoriesAdd';
 import {name as CategoryEdit} from '../categoriesEdit/categoriesEdit';
+import {name as OrderList} from '../orderList/orderList';
 
 //SERVICES
 import {name as ProductsService} from '../../services/ProductsService';
 import {name as CompaniesService} from '../../../common/services/CompaniesService';
 import {name as CategoriesService} from '../../services/CategoriesService';
-import {name as OrdersService} from '../../../common/services/OrdersService';
+import {name as OrdersServiceAdmin} from '../../services/OrdersServiceAdmin';
 
 class appAdmin {
 }
@@ -45,11 +46,12 @@ export default angular.module(name, [
     CategoriesList,
     CategoryAdd,
     CategoryEdit,
+    OrderList,
     //SERVICES
     ProductsService,
     CompaniesService,
     CategoriesService,
-    OrdersService
+    OrdersServiceAdmin
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
         controllerAs: name,

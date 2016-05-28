@@ -3,9 +3,11 @@
 .td-small {
   width: 18%;
 }
+
 .action-cell {
   width: 100px;
 }
+
 .fade {
   position: absolute;
   left: 0;
@@ -13,27 +15,31 @@
   height: 100%;
   opacity: 1;
 }
+
 .fade.ng-enter,
 .fade.ng-leave {
-  transition: transform 600ms cubic-bezier(.12,.88,.37,.99), opacity 350ms linear;
+  transition: transform 600ms cubic-bezier(.12, .88, .37, .99), opacity 350ms linear;
 }
+
 .fade.ng-enter {
-  transform: translate3d(15%,0,0);
+  transform: translate3d(15%, 0, 0);
   opacity: 0;
 }
+
 .fade.ng-enter-active,
 .fade.ng-leave {
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
 }
+
 .fade.ng-leave-active {
   transition: 0;
   opacity: 0;
 }
+
 .map-canvas {
   height: 500px !important;
 }
-
 
 // .content-wrapper {
 //   background: #ffffff;
@@ -50,16 +56,16 @@
 //     }
 // }
 
-.client-layout{
+.client-layout {
   font-family: 'Roboto', sans-serif;
 }
 
-.user-wrapper{
-  margin-top:60px;
+.user-wrapper {
+  margin-top: 60px;
   position: relative;
 }
 
-.restaurant-item{
+.restaurant-item {
   display: block;
   height: 100px;
   line-height: 100px;
@@ -82,31 +88,32 @@
 
 $defaultColor: white;
 
-.navbar-default{
+.navbar-default {
   background: $defaultColor;
 }
 
+.client-sidebar {
+  .panel {
+    border-radius: 0;
 
-.panel{
-  border-radius:0;
+    &-default > &-heading {
+      background: $defaultColor;
+    }
 
-  &-default > &-heading{
-    background: $defaultColor;
-  }
-
-  &-body{
-    padding:0;
+    &-body {
+      padding: 0;
+    }
   }
 }
 
-.btn{
+.btn {
   //border-radius: 0;
 
-  &-default{
+  &-default {
     background: $defaultColor;
   }
 }
 
-.no-padding{
-  padding:0;
+.no-padding {
+  padding: 0;
 }
