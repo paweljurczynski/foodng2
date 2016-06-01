@@ -13,9 +13,9 @@ class OrderForm {
         $reactive(this).attach($scope);
         this.CartService = CartService;
         this.OrdersService = OrdersService;
+        this.UserService = UserService;
         this.cart = CartService.getCart();
         this.total = (cart) => CartService.getTotal(cart);
-
         this.userData = UserService.getUserData();
     }
 
@@ -24,9 +24,7 @@ class OrderForm {
         this.cart = _.without(this.cart, _.findWhere(this.cart, {_id: productId}));
     }
 
-    createOrder() {
-        this.OrdersService.createOrder(this.userData);
-    }
+    createOrder = () => this.OrdersService.createOrder(this.userData);
 }
 
 const name = 'orderForm';

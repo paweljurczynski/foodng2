@@ -32,11 +32,27 @@ class UserService {
             //     }
             // });
 
-            let userData = Meteor.user().profile.userData;
+            let userData = Meteor.user().profile.userData || {};
+
             userData.email = _.first(Meteor.user().emails).address;
 
             return userData;
         } else {
+            this.Notification.error('Nie jesteś zalogowany');
+        }
+    }
+
+    setUserData(userData){
+        let _id = Meteor.userId();
+        if (_id) {
+            Meteor.users.update({_id}, {
+                $set: {
+                    profile: {
+                        userData
+                    }
+                }
+            });
+        }else {
             this.Notification.error('Nie jesteś zalogowany');
         }
     }
