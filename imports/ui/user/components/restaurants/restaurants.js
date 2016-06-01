@@ -41,7 +41,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('user.restaurants', {
-            url: '/Restaurants',
+            url: '/Restauracje',
             template: '<restaurants></restaurants>'
             // views: {
             //     'content': {

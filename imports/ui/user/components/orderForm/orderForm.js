@@ -8,14 +8,15 @@ import {Utils} from '../../../../utils/Utils';
 import './orderForm.html';
 
 class OrderForm {
-    constructor($scope, $reactive, CartService,OrdersService) {
+    constructor($scope, $reactive, CartService, OrdersService, UserService) {
         'ngInject';
         $reactive(this).attach($scope);
         this.CartService = CartService;
         this.OrdersService = OrdersService;
         this.cart = CartService.getCart();
-        this.order = {}; //fills in view
         this.total = (cart) => CartService.getTotal(cart);
+
+        this.userData = UserService.getUserData();
     }
 
     deleteFromCart(productId) {
@@ -23,8 +24,8 @@ class OrderForm {
         this.cart = _.without(this.cart, _.findWhere(this.cart, {_id: productId}));
     }
 
-    createOrder(){
-        this.OrdersService.createOrder(this.order);
+    createOrder() {
+        this.OrdersService.createOrder(this.userData);
     }
 }
 
@@ -47,6 +48,18 @@ function config($stateProvider) {
     $stateProvider
         .state('user.orderForm', {
             url: '/PotwierdzenieZamowienia',
-            template: '<order-form></order-form>'
+            template: '<order-form></order-form>',
+            resolve: {
+                currentUser: ($q, $rootScope, Notification) => {
+                    'ngInject';
+                    if (!Meteor.userId()) {
+                        Notification.error('Musisz się zalogować żeby złożyć zamówienie.');
+                        return $q.reject();
+                    }
+                    else {
+                        return $q.resolve();
+                    }
+                }
+            }
         });
 }

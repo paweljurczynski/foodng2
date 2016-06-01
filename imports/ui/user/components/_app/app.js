@@ -22,6 +22,7 @@ import {name as Cart} from '../cart/cart';
 import {name as CompaniesService} from '../../../common/services/CompaniesService';
 import {name as OrdersService} from '../../../common/services/OrdersService';
 import {name as CartService} from '../../services/CartService';
+import {name as UserService} from '../../services/UserService';
 
 //COMPONENTS
 
@@ -44,6 +45,7 @@ export default angular.module(name, [
     //SERVICES
     Cart,
     CompaniesService,
+    UserService,
     CartService
 ]).component(name, {
         templateUrl: Utils.getTemplatePath(name),
@@ -52,7 +54,7 @@ export default angular.module(name, [
     })
     .config(config);
 
-function config($locationProvider, $urlRouterProvider, NotificationProvider) {
+function config($locationProvider, $stateProvider, NotificationProvider) {
     'ngInject';
 
     $locationProvider.html5Mode(true);
@@ -66,4 +68,10 @@ function config($locationProvider, $urlRouterProvider, NotificationProvider) {
         positionX: 'right',
         positionY: 'top'
     });
+
+    $stateProvider.state('404', {
+        url: '/404',
+        template: 'NO FOUND'
+    });
+
 }

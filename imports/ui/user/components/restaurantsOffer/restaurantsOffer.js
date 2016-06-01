@@ -43,7 +43,7 @@ function config($stateProvider) {
     $stateProvider
         
         .state('user.restaurantsOffer', {
-                url: '/Restarurants/:restaurantId',
+                url: '/Restauracje/:restaurantId',
                 // params: {
                 //     restaurantName: {
                 //         value: '',

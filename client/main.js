@@ -30,6 +30,7 @@ export default angular.module(name, [
     })
     .config(config);
 
+
 function config($locationProvider, $urlRouterProvider, $stateProvider) {
     'ngInject';
 
@@ -45,5 +46,5 @@ function config($locationProvider, $urlRouterProvider, $stateProvider) {
             templateUrl: 'imports/ui/user/components/_app/layout.html'
         });
 
-    $urlRouterProvider.otherwise('/User/Restaurants');
+    $urlRouterProvider.otherwise('/User/Restauracje');
 }
