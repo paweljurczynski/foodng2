@@ -6,7 +6,7 @@ import {Utils} from '../../../../utils/Utils';
 
 import './categoriesAdd.html';
 
-//import {Categories} from '../../../../api/categories';
+import {Categories} from '../../../../api/categories';
 
 
 Meteor.methods({
