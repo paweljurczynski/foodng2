@@ -34,7 +34,6 @@ function config($locationProvider, $urlRouterProvider, $stateProvider) {
     'ngInject';
 
     $locationProvider.html5Mode(true);
-
     $stateProvider
         .state('admin', {
             url: '/Admin',

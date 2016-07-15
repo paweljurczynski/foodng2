@@ -4,42 +4,39 @@ import uiRouter from 'angular-ui-router';
 import {Utils} from '../../../../utils/Utils';
 
 import './categoriesList.html'
-import { Categories } from '../../../../api/categories'
-
+import {Categories} from '../../../../api/categories'
+import {CategoriesService} from '../../../../ui/admin/services/CategoriesService';
 
 class CategoriesList {
-    constructor($scope, $reactive, CompaniesService) {
+    constructor($scope, $reactive, CategoriesService, CompaniesService) {
         'ngInject';
-
-        console.log('enter to categories ctrl');
 
         $reactive(this).attach($scope);
 
-        this.helpers({
-            categories() {
-                return Categories.find({});
-            },
-                companies: () => CompaniesService.getViewModelsForCurrentUser()
+        this.CategoriesService = CategoriesService;
 
-    });
+        this.helpers({
+            categories: () => CategoriesService.getCategories(),
+            companies: () => CompaniesService.getViewModelsForCurrentUser()
+        });
     }
+
     delete(_id, name) {
         swal({
-            title: "Jesteś pewien?",
-            text: "Próbujesz usunąć kategorię: '" + name + "'. Spowoduje to usunięcie także dowiązań produktów do tej kategorii.",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Tak, usuń ją!",
-            cancelButtonText: "Anuluj",
-            closeOnConfirm: false,
-            html: false
-        }, function() {
-           Categories.remove({_id});
-            swal("Usunięto!",
-                "Kategoria '" + name + "' została usunięta.",
-                "success");
-        });
+                title: "Jesteś pewien?",
+                text: "Próbujesz usunąć kategorię: '" + name + "'. Spowoduje to usunięcie także dowiązań produktów do tej kategorii.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Tak, usuń ją!",
+                cancelButtonText: "Anuluj",
+                closeOnConfirm: false,
+                html: false
+            },
+            () => {
+                this.CategoriesService.remove({_id});
+            }
+        );
     }
 }
 

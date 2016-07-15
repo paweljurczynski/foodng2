@@ -4,6 +4,7 @@
 import angular from 'angular';
 import {Categories} from '../../../api/categories';
 import {Products} from '../../../api/products';
+import {Meteor} from 'meteor/meteor';
 
 class CategoriesService {
     constructor($state, $stateParams, Notification, CompaniesService) {
@@ -19,7 +20,7 @@ class CategoriesService {
         return Categories.find().fetch();
     }
 
-    getCompaniesWithCategories  ()  {
+    getCompaniesWithCategories() {
         return _.map(this.currentCompanies, company => {
             return {
                 _id: company._id,
@@ -29,50 +30,25 @@ class CategoriesService {
         });
     };
 
-
-    getCategoryById  (_id)  {
+    getCategoryById(_id) {
         let category = _.first(Categories.find({_id}).fetch());
         console.log('category', category);
         return category;
-}
+    }
 
-
-    delete (_id)  {
-        Categories.remove({
-            _id
+    update(category) {
+        Meteor.call('categories.update', category, err => {
+            if (err) {
+                this.Notification.error(err.message);
+            } else {
+                this.Notification.success('Kategoria "' + category.name + '" zaktualizowana!');
+                this.$state.go('admin.categories');
+            }
         });
     }
 
-
-    update  (category)  {
-        Categories.update({
-                _id: this.$stateParams.id
-            }, {
-                $set: {
-                    name: category.name,
-                    priceTypes: category.priceTypes
-                }
-            },
-            (err, doc) => {
-                if (err) {
-                    this.Notification.error(err.message);
-                } else {
-                    this.Notification.success('Kategoria "' + category.name + '" zaktualizowana!');
-                    this.$state.go('admin.categories');
-                }
-            }
-        );
-    }
-
-
-    add  (vmCategory) {
-        let category = {
-            name: vmCategory.name,
-            priceTypes: vmCategory.priceTypes,
-            companyId: "DsadSdasdDsR3A"
-        }
-
-        Categories.insert(category, (err, doc) => {
+    add(category) {
+        Meteor.call('categories.add', category, (err,res) => {
             if (err) {
                 this.Notification.error(err.message);
             } else {
@@ -82,10 +58,13 @@ class CategoriesService {
         });
     }
 
-
-    removeCategory (categoryId)  {
-        Categories.remove({
-            "_id": categoryId
+    remove(id) {
+        Meteor.call('categories.remove', id, err => {
+            if (err) {
+                this.Notification.error(err.message);
+            } else {
+                this.Notification.success('Kategoria usunięta!');
+            }
         });
     }
 }
